@@ -1,6 +1,6 @@
 {
   "infiniteLoopProtection": true,
   "hardReloadOnChange": true,
-  "view": "browser",
+  "view": "console",
   "template": "nuxt"
 }
