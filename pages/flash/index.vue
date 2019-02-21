@@ -43,11 +43,11 @@
         <nuxt-link :to="{path: '/flash/show', query: {id: item.id, type: 'reverse'}}">
           逆引き
         </nuxt-link>
-        <nuxt-link :to="{path: '/flash/show', query: {id: item.id, type: 'done'}}">
-          復習
-        </nuxt-link>
         <nuxt-link :to="{path: '/flash/show', query: {id: item.id, type: 'notyet'}}">
           未正解
+        </nuxt-link>
+        <nuxt-link :to="{path: '/flash/show', query: {id: item.id, type: 'done'}}">
+          復習
         </nuxt-link>
         <div>
           <span>{{ new Date(item.date).toString() }}</span>
