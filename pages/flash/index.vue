@@ -4,6 +4,12 @@
       あなたの単語帳
     </h1>
     <section class="section">
+      <button class="button" @click="saveLocal">
+        オフライン保存
+      </button>
+      <button class="button" @click="loadLocal">
+        オフライン読込
+      </button>
       <b-field label="データ">
         <b-input v-model="jsonData" :rows="3" type="textarea" />
       </b-field>
@@ -12,12 +18,6 @@
       </button>
       <button class="button" @click="exportData">
         エクスポート
-      </button>
-      <button class="button" @click="saveLocal">
-        オフライン保存
-      </button>
-      <button class="button" @click="loadLocal">
-        オフライン読込
       </button>
     </section>
     <b-field>
