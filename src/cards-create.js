@@ -12,19 +12,20 @@ exports.handler = (event, context, callback) => {
   // const data = JSON.parse(event.body)
   console.log('Function `todo-create` invoked')
   const todoItem = {
+    data: {
       id:643474,
       date:"2019-02-21T17:41:19.688Z",
       title:"英単語",
       summary:"Java単語",
       cards:[
-          {
-              word:"great",
-              description:"すごい",
-              reminder:"",
-              done:true
-              
-          }
+        {
+          word:"great",
+          description:"すごい",
+          reminder:"",
+          done:true
+        }
       ]
+    }
   }
   /* construct the fauna query */
   return client.query(q.Create(q.Ref('classes/card'), todoItem))
