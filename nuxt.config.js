@@ -41,6 +41,10 @@ module.exports = {
     'nuxt-buefy',
     '@nuxtjs/pwa'
   ],
+  manifest: {
+    name: "Flash Cards",
+    lang: "ja"
+  },
   /*
   ** Axios module configuration
   */

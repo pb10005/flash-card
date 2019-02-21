@@ -5,7 +5,7 @@
         title="Free"
         icon="github-circle"
       >
-        Open source on <a href="https://github.com/buefy/buefy"> GitHub</a>
+        Powered by <a href="https://github.com/buefy/buefy"> Buefy</a>
       </card>
     </div>
   </section>

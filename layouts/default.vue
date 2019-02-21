@@ -63,9 +63,9 @@ export default {
           to: { name: 'index' }
         },
         {
-          title: 'Inspire',
-          icon: 'lightbulb',
-          to: { name: 'inspire' }
+          title: '単語帳',
+          icon: 'cards',
+          to: { name: 'flash' }
         }
       ]
     }
