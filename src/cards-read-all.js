@@ -7,7 +7,7 @@ const client = new faunadb.Client({
 
 exports.handler = (event, context, callback) => {
   console.log("Function `cards-read-all` invoked")
-  return client.query(q.Paginate(q.Match(q.Ref("indexes/all_cards"))))
+  return client.query(q.Paginate(q.Match(q.Ref("indexes/all-cards"))))
   .then((response) => {
     const todoRefs = response.data
     console.log("Card refs", todoRefs)
