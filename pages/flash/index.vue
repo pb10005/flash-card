@@ -69,6 +69,9 @@ export default {
       jsonData: ''
     }
   },
+  mounted() {
+    this.$store.dispatch('fetchDecks')
+  },
   computed: {
     list() {
       return this.$store.state.list
