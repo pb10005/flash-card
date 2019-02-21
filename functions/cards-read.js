@@ -6,7 +6,6 @@ const client = new faunadb.Client({
 })
 
 exports.handler = (event, context, callback) => {
-  const id = getId(event.path)
   console.log(`Function 'cards-read' invoked.`)
   return client.query(q.Get(q.Ref(`classes/cards/`)))
   .then((response) => {
