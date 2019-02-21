@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const state = () => ({
   list: []
 })
@@ -17,5 +19,14 @@ export const mutations = {
   },
   remove(state, { todo }) {
     state.list.splice(state.list.indexOf(todo), 1)
+  }
+}
+
+export const actions = {
+  fetchDecks(context, payload) {
+    axios.get('/.netlify/functions/cards-read-all')
+      .then(response => {
+        context.commit('importData', response)
+      })
   }
 }
