@@ -5,6 +5,7 @@
   "author": "pb10001",
   "private": true,
   "scripts": {
+    "bootstrap": "node ./scripts/bootstrap-fauna-database.js",
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "serve:functions": "netlify-lambda serve src",
     "build": "nuxt build",
@@ -50,8 +51,8 @@
   },
   "proxy": {
     "/.netlify": {
-      target: "http://localhost:9000",
-      pathRewrite: { "^/.netlify/functions": "" }
+      "target": "http://localhost:9000",
+      "pathRewrite": { "^/.netlify/functions": "" }
     }
   }
 }
