@@ -26,8 +26,7 @@ export const actions = {
   fetchDecks(context, payload) {
     axios.get('/.netlify/functions/cards-read-all')
       .then(response => {
-        const list = response.json()
-        context.commit('importData', list.map(x => x.data))
+        context.commit('importData', response.map(x => x.data))
       })
   }
 }
