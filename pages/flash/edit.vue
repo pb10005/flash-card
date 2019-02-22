@@ -88,7 +88,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch('cardList/setCards', this.$nuxt.$route.query.id)
-    this.newSummary = this.summary
   }
 }
 </script>
