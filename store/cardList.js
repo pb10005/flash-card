@@ -26,6 +26,7 @@ export const mutations = {
     card.done = !card.done
   },
   setCards(state, payload) {
+    alert(payload)
     state.deck = payload
     state.deck.summary = payload.summary
   }
