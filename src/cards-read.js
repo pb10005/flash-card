@@ -4,9 +4,11 @@ const q = faunadb.query
 const client = new faunadb.Client({
   secret: process.env.FAUNADB_SECRET
 })
-
+function getId(urlPath) {
+  return urlPath.match(/([^\/]*)\/*$/)[0]
+}
 exports.handler = (event, context, callback) => {
-  const id = event.body
+  const id = getId(event.path)
   console.log(`Function 'cards-read' invoked.`)
   return client.query(q.Get(q.Ref(`classes/card/${id}`)))
   .then((response) => {
