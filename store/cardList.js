@@ -26,9 +26,8 @@ export const mutations = {
     card.done = !card.done
   },
   setCards(state, payload) {
-    alert(JSON.stringify(payload))
-    state.deck = payload
-    state.deck.summary = payload.summary
+    state.deck = payload.data
+    state.deck.summary = payload.data.summary
   }
 }
 export const actions = {
