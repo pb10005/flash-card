@@ -11,6 +11,7 @@
         新規作成
       </button>
     </form>
+    <p>{{response}}</p>
   </div>
 </template>
 <script>
@@ -19,6 +20,11 @@ export default {
     return {
       title: '',
       summary: ''
+    }
+  },
+  computed: {
+    response() {
+      return this.$store.state.data
     }
   }
 }
