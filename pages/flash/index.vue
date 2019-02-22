@@ -31,6 +31,7 @@
         </nuxt-link>
         <div>
           <span>{{ new Date(item.date).toString() }}</span>
+          <span>{{ item.ref }}</span>
           <nuxt-link :to="{path: '/flash/edit', query: {id: item.id}}">
             編集
           </nuxt-link>
