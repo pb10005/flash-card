@@ -32,7 +32,7 @@ export const mutations = {
 }
 export const actions = {
   setCards(context, payload) {
-    axios.get('/.netlify/functions/cards-read', payload).then(response => {
+    axios.get(`/.netlify/functions/cards-read/${payload}`).then(response => {
       context.commit('setCards', response.data)
     })
   }
