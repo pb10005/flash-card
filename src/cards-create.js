@@ -11,7 +11,7 @@ exports.handler = (event, context, callback) => {
   /* parse the string body into a useable JS object */
   const data = JSON.parse(event.body)
   console.log('Function `todo-create` invoked', data)
-  data.date = new Date().toDateString()
+  data.date = new Date().toString()
   data.cards = []
   const item = {
     data: data
