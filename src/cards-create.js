@@ -9,10 +9,9 @@ const client = new faunadb.Client({
 /* export our lambda function as named "handler" export */
 exports.handler = (event, context, callback) => {
   /* parse the string body into a useable JS object */
-  console.log(event)
   const data = JSON.parse(event.body)
   console.log('Function `todo-create` invoked', data)
-  data.date = new Date()
+  data.date = new Date().toDateString()
   data.cards = []
   const item = {
     data: data
