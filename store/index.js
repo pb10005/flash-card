@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export const state = () => ({
-  list: []
+  list: [],
+  data: {}
 })
 export const mutations = {
   importData(state, payload) {
@@ -19,12 +20,20 @@ export const mutations = {
   },
   remove(state, { todo }) {
     state.list.splice(state.list.indexOf(todo), 1)
+  },
+  setData(state, payload) {
+    state.data = payload
   }
 }
 
 export const actions = {
   createDeck(context, payload) {
-    axios.post('/.netlify/functions/cards-create', JSON.stringify(payload))
+    axios
+      .post('/.netlify/functions/cards-create', JSON.stringify(payload))
+      .then(response => {
+        const data = response.data
+        context.commit('setData', data)
+      })
   },
   fetchDecks(context, payload) {
     axios.get('/.netlify/functions/cards-read-all').then(response => {
