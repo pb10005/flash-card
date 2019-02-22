@@ -3,29 +3,9 @@
     <h1 class="title">
       あなたの単語帳
     </h1>
-    <section class="section">
-      <button class="button" @click="saveLocal">
-        オフライン保存
-      </button>
-      <button class="button" @click="loadLocal">
-        オフライン読込
-      </button>
-      <b-field label="データ">
-        <b-input v-model="jsonData" :rows="3" type="textarea" />
-      </b-field>
-      <button class="button" @click="importData">
-        インポート
-      </button>
-      <button class="button" @click="exportData">
-        エクスポート
-      </button>
-    </section>
-    <b-field>
-      <b-input v-model="newTitle" type="text" placeholder="タイトル" />
-      <button class="button" @click="$store.commit('add', newTitle)">
-        新規作成
-      </button>
-    </b-field>
+    <nuxt-link to="/flash/add">
+      新規作成
+    </nuxt-link>
     <ul>
       <li
         v-for="(item, index) in list"
@@ -63,36 +43,15 @@
 <script>
 export default {
   name: 'Flash',
-  data() {
-    return {
-      newTitle: '',
-      jsonData: ''
-    }
-  },
-  mounted() {
-    this.$store.dispatch('fetchDecks')
-  },
   computed: {
     list() {
       return this.$store.state.list
     }
   },
-  methods: {
-    importData() {
-      if (!this.jsonData) return
-      this.$store.commit('importData', JSON.parse(this.jsonData))
-    },
-    exportData() {
-      this.jsonData = JSON.stringify(this.list)
-    },
-    saveLocal() {
-      localStorage.data = JSON.stringify(this.list)
-    },
-    loadLocal() {
-      if (!localStorage.data) return
-      this.$store.commit('importData', JSON.parse(localStorage.data))
-    }
-  }
+  mounted() {
+    this.$store.dispatch('fetchDecks')
+  },
+  methods: {}
 }
 </script>
 <style scoped>

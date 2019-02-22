@@ -23,11 +23,15 @@ export const mutations = {
 }
 
 export const actions = {
+  createDeck(context, payload) {
+    axios.post('/.netlify/functions/cards-create', {
+      body: JSON.stringify(payload)
+    })
+  },
   fetchDecks(context, payload) {
-    axios.get('/.netlify/functions/cards-read-all')
-      .then(response => {
-        const list = response.data
-        context.commit('importData', list.map(x => x.data))
-      })
+    axios.get('/.netlify/functions/cards-read-all').then(response => {
+      const list = response.data
+      context.commit('importData', list.map(x => x.data))
+    })
   }
 }

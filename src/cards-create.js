@@ -9,26 +9,16 @@ const client = new faunadb.Client({
 /* export our lambda function as named "handler" export */
 exports.handler = (event, context, callback) => {
   /* parse the string body into a useable JS object */
-  // const data = JSON.parse(event.body)
-  console.log('Function `todo-create` invoked')
-  const todoItem = {
-    data: {
-      id:643474,
-      date:"2019-02-21T17:41:19.688Z",
-      title:"英単語",
-      summary:"Java単語",
-      cards:[
-        {
-          word:"great",
-          description:"すごい",
-          reminder:"",
-          done:true
-        }
-      ]
-    }
+  console.log(event)
+  const data = JSON.parse(event.body)
+  console.log('Function `todo-create` invoked', data)
+  data.date = new Date()
+  data.cards = []
+  const item = {
+    data: data
   }
   /* construct the fauna query */
-  return client.query(q.Create(q.Ref('classes/card'), todoItem))
+  return client.query(q.Create(q.Ref('classes/card'), item))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
