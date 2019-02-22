@@ -11,7 +11,7 @@
         新規作成
       </button>
     </form>
-    <p>{{response}}</p>
+    <p>{{ response }}</p>
   </div>
 </template>
 <script>

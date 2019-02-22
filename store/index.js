@@ -38,11 +38,14 @@ export const actions = {
   fetchDecks(context, payload) {
     axios.get('/.netlify/functions/cards-read-all').then(response => {
       const list = response.data
-      context.commit('importData', list.map(x => {
-        let res = x.data
-        res.ref = x.ref['@ref'].id
-        return res
-      }))
+      context.commit(
+        'importData',
+        list.map(x => {
+          const res = x.data
+          res.ref = x.ref['@ref'].id
+          return res
+        })
+      )
     })
   }
 }

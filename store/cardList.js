@@ -1,3 +1,4 @@
+import axios from 'axios'
 export const state = () => ({
   deck: {
     id: -1,
@@ -31,7 +32,9 @@ export const mutations = {
 }
 export const actions = {
   setCards(context, payload) {
-    context.commit('setCards', payload)
+    axios.get('/.netlify/functions/cards-read', payload).then(response => {
+      context.commit('setCards', response.data)
+    })
   }
 }
 export const getters = {

@@ -50,10 +50,7 @@ export default {
     }
   },
   mounted() {
-    const list = this.$store.state.list.find(
-      x => x.id === this.$nuxt.$route.query.id
-    )
-    this.$store.dispatch('cardList/setCards', list)
+    this.$store.dispatch('cardList/setCards', this.$nuxt.$route.query.id)
   }
 }
 </script>
