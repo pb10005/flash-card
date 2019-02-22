@@ -40,7 +40,7 @@ export const actions = {
       const list = response.data
       context.commit('importData', list.map(x => {
         let res = x.data
-        res.ref = x['@ref'].id
+        res.ref = x.id
         return res
       }))
     })
