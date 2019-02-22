@@ -24,9 +24,7 @@ export const mutations = {
 
 export const actions = {
   createDeck(context, payload) {
-    axios.post('/.netlify/functions/cards-create', {
-      body: JSON.stringify(payload)
-    })
+    axios.post('/.netlify/functions/cards-create', JSON.stringify(payload))
   },
   fetchDecks(context, payload) {
     axios.get('/.netlify/functions/cards-read-all').then(response => {
