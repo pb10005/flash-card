@@ -17,16 +17,16 @@
         <p class="is-size-6">
           進捗度: {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
         </p>
-        <nuxt-link :to="{path: '/flash/show', query: {id: item.id, type: 'normal'}}">
+        <nuxt-link :to="{path: '/flash/show', query: {id: item.ref, type: 'normal'}}">
           通常
         </nuxt-link>
-        <nuxt-link :to="{path: '/flash/show', query: {id: item.id, type: 'reverse'}}">
+        <nuxt-link :to="{path: '/flash/show', query: {id: item.ref, type: 'reverse'}}">
           逆引き
         </nuxt-link>
-        <nuxt-link :to="{path: '/flash/show', query: {id: item.id, type: 'notyet'}}">
+        <nuxt-link :to="{path: '/flash/show', query: {id: item.ref, type: 'notyet'}}">
           未正解
         </nuxt-link>
-        <nuxt-link :to="{path: '/flash/show', query: {id: item.id, type: 'done'}}">
+        <nuxt-link :to="{path: '/flash/show', query: {id: item.ref, type: 'done'}}">
           復習
         </nuxt-link>
         <div>
