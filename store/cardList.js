@@ -24,7 +24,7 @@ export const mutations = {
     state.newDeck.summary = payload
   },
   remove(state, todo) {
-    state.newDeck.cards.splice(state.cards.indexOf(todo), 1)
+    state.newDeck.cards.splice(state.newDeck.cards.indexOf(todo), 1)
   },
   toggle(state, card) {
     card.done = !card.done
