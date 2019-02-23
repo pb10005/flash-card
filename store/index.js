@@ -66,6 +66,8 @@ export const actions = {
               alert('通信エラーです。', error)
             })
         })
+    } else {
+      window.netlifyIdentity.open()
     }
   }
 }
