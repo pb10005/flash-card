@@ -49,13 +49,6 @@
         <nuxt />
       </div>
     </section>
-    <!-- Add a menu:
-    Log in / Sign up - when the user is not logged in
-    Username / Log out - when the user is logged in
-    -->
-    <div data-netlify-identity-menu />
-    <!-- include the widget -->
-    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
   </div>
 </template>
 

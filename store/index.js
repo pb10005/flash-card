@@ -36,27 +36,36 @@ export const actions = {
       })
   },
   fetchDecks(context, payload) {
-    let headers = { "Content-Type": "application/json" };
+    if (!window.netlifyIdentity) return
+    let headers = {
+      'Content-Type': 'application/json'
+    }
     if (window.netlifyIdentity.currentUser()) {
-      window.netlifyIdentity.currentUser().jwt().then((token) => {
-        headers = { ...headers, Authorization: `Bearer ${token}` }
-        axios
-          .get('/.netlify/functions/cards-read-all', { headers: headers })
-          .then(response => {
-            const list = response.data
-            context.commit(
-              'importData',
-              list.map(x => {
-                const res = x.data
-                res.ref = x.ref['@ref'].id
-                return res
-              })
-            )
-          })
-          .catch(error => {
-            alert('通信エラーです。', error)
-          })
-      })
+      window.netlifyIdentity
+        .currentUser()
+        .jwt()
+        .then(token => {
+          headers = {
+            ...headers,
+            Authorization: `Bearer ${token}`
+          }
+          axios
+            .get('/.netlify/functions/cards-read-all', { headers: headers })
+            .then(response => {
+              const list = response.data
+              context.commit(
+                'importData',
+                list.map(x => {
+                  const res = x.data
+                  res.ref = x.ref['@ref'].id
+                  return res
+                })
+              )
+            })
+            .catch(error => {
+              alert('通信エラーです。', error)
+            })
+        })
     }
   }
 }
