@@ -1,7 +1,11 @@
 import axios from 'axios'
 export const state = () => ({
   deck: {
-    id: -1,
+    title: '',
+    summary: '',
+    cards: []
+  },
+  newDeck: {
     title: '',
     summary: '',
     cards: []
@@ -17,7 +21,7 @@ export const mutations = {
     })
   },
   setSummary(state, payload) {
-    state.deck.summary = payload
+    state.newDeck.summary = payload
   },
   remove(state, todo) {
     state.deck.cards.splice(state.cards.indexOf(todo), 1)
@@ -27,14 +31,27 @@ export const mutations = {
   },
   setCards(state, payload) {
     state.deck = payload.data
-    state.deck.summary = payload.data.summary
+    state.newDeck = Object.assign({}, state.deck)
   }
 }
 export const actions = {
   setCards(context, payload) {
-    axios.get(`/.netlify/functions/cards-read/${payload}`).then(response => {
-      context.commit('setCards', response.data)
-    })
+    axios
+      .get(`/.netlify/functions/cards-read/${payload}`)
+      .then(response => {
+        context.commit('setCards', response.data)
+      })
+      .catch(error => {
+        alert('通信エラーです。', error)
+      })
+  },
+  update(context, payload) {
+    axios
+      .post(`/.netlify/functions/cards-update/${payload.id}`, payload.data)
+      .then(response => {})
+      .catch(error => {
+        alert('通信エラーです。', error)
+      })
   }
 }
 export const getters = {

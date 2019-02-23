@@ -7,9 +7,10 @@ const client = new faunadb.Client({
 })
 
 exports.handler = (event, context, callback) => {
+  const data = JSON.parse(event.body)
   const id = getId(event.path)
-  console.log(`Function 'cards-read' invoked.`)
-  return client.query(q.Get(q.Ref(`classes/card/${id}`)))
+  console.log(`Function 'cards-update' invoked. update id: ${id}`)
+  return client.query(q.Update(q.Ref(`classes/card/${id}`), {data}))
   .then((response) => {
     console.log("success", response)
     return callback(null, {
