@@ -13,7 +13,7 @@ export const state = () => ({
 })
 export const mutations = {
   add(state, payload) {
-    state.deck.cards.push({
+    state.newDeck.cards.push({
       word: payload.word,
       description: payload.description,
       reminder: payload.reminder,
@@ -24,7 +24,7 @@ export const mutations = {
     state.newDeck.summary = payload
   },
   remove(state, todo) {
-    state.deck.cards.splice(state.cards.indexOf(todo), 1)
+    state.newDeck.cards.splice(state.cards.indexOf(todo), 1)
   },
   toggle(state, card) {
     card.done = !card.done
