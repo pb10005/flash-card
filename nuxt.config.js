@@ -39,8 +39,12 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/proxy'
   ],
+  proxy: {
+    '/.netlify/functions': 'http://localhost:9000'
+  },
   manifest: {
     name: "Flash Cards",
     lang: "ja"

@@ -53,13 +53,5 @@
     "npm-run-all": "^4.1.5",
     "prettier": "1.14.3",
     "vue-jest": "^3.0.2"
-  },
-  "proxy": {
-    "/.netlify": {
-      "target": "http://localhost:9000",
-      "pathRewrite": {
-        "^/.netlify/functions": ""
-      }
-    }
   }
 }
