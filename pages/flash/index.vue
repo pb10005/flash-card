@@ -49,7 +49,7 @@ export default {
     }
   },
   mounted() {
-    if(!window.netlifyIdentity) {
+    if (!window.netlifyIdentity) {
       this.$router.push('/')
     }
     this.$store.dispatch('fetchDecks')

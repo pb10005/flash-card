@@ -43,10 +43,23 @@
       :key="index"
       :card="item"
       :removable="true"
+      :editable="true"
       @checked="$store.commit('cardList/toggle', item)"
       @remove="$store.commit('cardList/remove', item)"
+      @inputWord="value => $store.commit('cardList/update', {
+        card: item,
+        word: value
+      })"
+      @inputDescription="value => $store.commit('cardList/update', {
+        card: item,
+        description: value
+      })"
+      @inputReminder="value => $store.commit('cardList/update', {
+        card: item,
+        reminder: value
+      })"
     />
-    <button class="button is-danger">
+    <button class="button is-danger" @click="$router.go(-1)">
       キャンセル
     </button>
     <button class="button" @click="submit">
@@ -86,8 +99,13 @@ export default {
     name() {
       return this.deck.title
     },
-    cards() {
-      return this.deck.cards
+    cards: {
+      get() {
+        return this.deck.cards
+      },
+      set(value) {
+        this.$store.commit('cardList/setCardList', value)
+      }
     }
   },
   mounted() {
@@ -99,6 +117,7 @@ export default {
         id: this.$nuxt.$route.query.id,
         data: this.$store.state.cardList.newDeck
       })
+      this.$router.go(-1)
     }
   }
 }

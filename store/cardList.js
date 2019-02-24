@@ -1,4 +1,5 @@
 import axios from 'axios'
+import getToken from './util/getToken'
 export const state = () => ({
   deck: {
     title: '',
@@ -29,21 +30,52 @@ export const mutations = {
   toggle(state, card) {
     card.done = !card.done
   },
+  moveUp(state, card) {
+    const tmpList = Object.assign([], state.newDeck.cards)
+    const index = tmpList.indexOf(card)
+    if (index === 0) return
+    const tmp = tmpList[index]
+    tmpList[index] = tmpList[index - 1]
+    tmpList[index - 1] = tmp
+    state.newDeck.cards = tmpList
+  },
+  moveDown(state, card) {
+    const tmpList = Object.assign([], state.newDeck.cards)
+    const index = tmpList.indexOf(card)
+    if (index === tmpList.length - 1) return
+    const tmp = tmpList[index]
+    tmpList[index] = tmpList[index + 1]
+    tmpList[index + 1] = tmp
+    state.newDeck.cards = tmpList
+  },
   setCards(state, payload) {
     state.deck = payload.data
     state.newDeck = Object.assign({}, state.deck)
+  },
+  update(state, payload) {
+    if (payload.word) {
+      payload.card.word = payload.word
+    } else if (payload.description) {
+      payload.card.description = payload.description
+    } else if (payload.reminder) {
+      payload.card.reminder = payload.reminder
+    }
   }
 }
 export const actions = {
   setCards(context, payload) {
-    axios
-      .get(`/.netlify/functions/cards-read/${payload}`)
-      .then(response => {
-        context.commit('setCards', response.data)
-      })
-      .catch(error => {
-        alert('通信エラーです。', error)
-      })
+    getToken().then(headers => {
+      axios
+        .get(`/.netlify/functions/cards-read/${payload}`, {
+          headers: headers
+        })
+        .then(response => {
+          context.commit('setCards', response.data)
+        })
+        .catch(error => {
+          alert('通信エラーです。', error)
+        })
+    })
   },
   update(context, payload) {
     axios
