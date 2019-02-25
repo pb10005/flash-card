@@ -87,5 +87,14 @@ export const actions = {
   }
 }
 export const getters = {
-  filtered(state) {}
+  shuffled(state) {
+    const list = Object.assign([], state.deck.cards)
+    for (let i = list.length - 1; i >= 1; i--) {
+      const r = Math.floor(Math.random() * i)
+      const tmp = list[r]
+      list[r] = list[i]
+      list[i] = tmp
+    }
+    return list
+  }
 }

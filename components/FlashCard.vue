@@ -2,9 +2,9 @@
   <div>
     <div class="card">
       <div v-if="editable">
-        <b-input :value="card.word" @input="inputWord" />
-        <b-input :value="card.description" @input="value => $emit('inputDescription', value)" />
-        <b-input :value="card.reminder" @input="value => $emit('inputReminder', value)" />
+        <b-input :value="card.word" placeholder="単語" @input="inputWord" />
+        <b-input :value="card.description" placeholder="説明" @input="value => $emit('inputDescription', value)" />
+        <b-input :value="card.reminder" placeholder="思い出し方" @input="value => $emit('inputReminder', value)" />
         <button class="button" @click="$store.commit('cardList/moveUp', card)">
           上
         </button>

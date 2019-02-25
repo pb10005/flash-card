@@ -40,12 +40,13 @@ export default {
       return this.deck.title
     },
     cards() {
+      const list = this.$store.getters['cardList/shuffled']
       if (this.$nuxt.$route.query.type === 'done') {
-        return this.deck.cards.filter(x => x.done)
+        return list.filter(x => x.done)
       } else if (this.$nuxt.$route.query.type === 'notyet') {
-        return this.deck.cards.filter(x => !x.done)
+        return list.filter(x => !x.done)
       } else {
-        return this.deck.cards
+        return list
       }
     }
   },
