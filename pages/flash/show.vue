@@ -4,9 +4,16 @@
       {{ title }}
     </p>
     <p class="subtitle">
-      {{ deck.summary }}
+      <span>
+        {{ deck.summary }}
+      </span><br>
+      <span>
+        進捗度: {{ deck.cards.filter(x => x.done).length }} / {{ deck.cards.length }}
+      </span>
+      <span>
+        <progress class="progress is-success" :value="deck.cards.filter(x => x.done).length" :max="deck.cards.length" />
+      </span>
     </p>
-    <p>進捗度 {{ cards.filter(x => x.done).length }}/{{ cards.length }}</p>
     <FlashCard
       v-for="(item, index) in cards"
       :key="index"

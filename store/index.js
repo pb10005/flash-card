@@ -31,7 +31,9 @@ export const actions = {
   createDeck(context, payload) {
     getToken().then(headers => {
       axios
-        .post('/.netlify/functions/cards-create', JSON.stringify(payload), { headers: headers })
+        .post('/.netlify/functions/cards-create', JSON.stringify(payload), {
+          headers: headers
+        })
         .then(response => {
           const data = response.data
           context.commit('setData', data)
