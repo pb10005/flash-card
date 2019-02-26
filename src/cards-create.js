@@ -8,6 +8,7 @@ const client = new faunadb.Client({
 
 exports.handler = (event, context, callback) => {
   if (!context.clientContext.user) {
+    console.log("error")
     return callback(null, {
       statusCode: 400,
       body: "Unauthorized"
@@ -15,7 +16,7 @@ exports.handler = (event, context, callback) => {
   }
   const data = JSON.parse(event.body)
   console.log('Function `todo-create` invoked', data)
-  data.author = context.clientContext.user.user_metadata.full_name
+  // data.author = context.clientContext.user.user_metadata.full_name
   data.date = new Date().toString()
   data.cards = []
   const item = {

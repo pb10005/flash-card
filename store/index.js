@@ -35,6 +35,9 @@ export const actions = {
         const data = response.data
         context.commit('setData', data)
       })
+      .catch(error => {
+        alert('エラーです。', error)
+      })
   },
   fetchDecks(context, payload) {
     getToken().then(headers => {
