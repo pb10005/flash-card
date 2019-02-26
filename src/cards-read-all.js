@@ -25,7 +25,7 @@ exports.handler = (event, context, callback) => {
     // then query the refs
     return client.query(getAllTodoDataQuery).then((ret) => {
       const data = ret.filter(x => {
-        return x.data.author === context.clientContext.user.user_metadata.full_name
+        return x.data.author === context.clientContext.user.sub
       })
       return callback(null, {
         statusCode: 200,
