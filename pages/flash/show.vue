@@ -16,7 +16,9 @@
       @checked="$store.commit('cardList/toggle', item)"
       @remove="$store.commit('cardList/remove', item)"
     />
-    <button class="button" @click="end">終了</button>
+    <button class="button" @click="end">
+      終了
+    </button>
   </section>
 </template>
 <script>
