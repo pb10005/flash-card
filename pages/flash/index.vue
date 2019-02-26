@@ -15,7 +15,12 @@
           {{ item.title }}
         </p>
         <p class="is-size-6">
-          進捗度: {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
+          <span>
+            進捗度: {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
+          </span>
+          <span>
+            <progress class="progress is-success" :value="item.cards.filter(x => x.done).length" :max="item.cards.length" />
+          </span>
         </p>
         <nuxt-link :to="{path: '/flash/show', query: {id: item.ref, type: 'normal'}}">
           通常
