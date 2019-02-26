@@ -78,12 +78,16 @@ export const actions = {
     })
   },
   update(context, payload) {
-    axios
-      .post(`/.netlify/functions/cards-update/${payload.id}`, payload.data)
-      .then(response => {})
-      .catch(error => {
-        alert('通信エラーです。', error)
-      })
+    getToken().then(headers => {
+      axios
+        .post(`/.netlify/functions/cards-update/${payload.id}`, payload.data, {
+          headers: headers
+        })
+        .then(response => {})
+        .catch(error => {
+          alert('通信エラーです。', error)
+        })
+    })
   }
 }
 export const getters = {
