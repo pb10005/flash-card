@@ -7,6 +7,7 @@ const client = new faunadb.Client({
 })
 
 exports.handler = (event, context, callback) => {
+  console.log(context.clientContext)
   if (!context.clientContext.user) {
     console.log("error")
     return callback(null, {
