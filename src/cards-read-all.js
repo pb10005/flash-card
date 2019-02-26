@@ -6,7 +6,12 @@ const client = new faunadb.Client({
 })
 
 exports.handler = (event, context, callback) => {
-  console.log(context.clientContext)
+  if (!context.clientContext.user) {
+    return callback(null, {
+      statusCode: 400,
+      body: "Unauthorized"
+    })
+  }
   console.log("Function `cards-read-all` invoked")
   return client.query(q.Paginate(q.Match(q.Ref("indexes/all-cards"))))
   .then((response) => {

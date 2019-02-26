@@ -7,6 +7,12 @@ const client = new faunadb.Client({
 })
 
 exports.handler = (event, context, callback) => {
+  if (!context.clientContext.user) {
+    return callback(null, {
+      statusCode: 400,
+      body: "Unauthorized"
+    })
+  }
   const id = getId(event.path)
   console.log(`Function 'cards-read' invoked.`)
   return client.query(q.Get(q.Ref(`classes/card/${id}`)))
