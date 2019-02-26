@@ -7,6 +7,12 @@ const client = new faunadb.Client({
 })
 
 exports.handler = (event, context, callback) => {
+  if (!context.clientContext.user) {
+    return callback(null, {
+      statusCode: 400,
+      body: "Unauthorized"
+    })
+  }
   const data = JSON.parse(event.body)
   const id = getId(event.path)
   console.log(`Function 'cards-update' invoked. update id: ${id}`)
