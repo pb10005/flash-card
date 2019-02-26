@@ -16,6 +16,7 @@
       @checked="$store.commit('cardList/toggle', item)"
       @remove="$store.commit('cardList/remove', item)"
     />
+    <button class="button" @click="end">終了</button>
   </section>
 </template>
 <script>
@@ -52,6 +53,15 @@ export default {
   },
   mounted() {
     this.$store.dispatch('cardList/setCards', this.$nuxt.$route.query.id)
+  },
+  methods: {
+    end() {
+      this.$store.dispatch('cardList/update', {
+        id: this.$nuxt.$route.query.id,
+        data: this.$store.state.cardList.deck
+      })
+      this.$router.go(-1)
+    }
   }
 }
 </script>
