@@ -29,15 +29,17 @@ export const mutations = {
 
 export const actions = {
   createDeck(context, payload) {
-    axios
-      .post('/.netlify/functions/cards-create', JSON.stringify(payload))
-      .then(response => {
-        const data = response.data
-        context.commit('setData', data)
-      })
-      .catch(error => {
-        alert('エラーです。', error)
-      })
+    getToken().then(headers => {
+      axios
+        .post('/.netlify/functions/cards-create', JSON.stringify(payload), { headers: headers })
+        .then(response => {
+          const data = response.data
+          context.commit('setData', data)
+        })
+        .catch(error => {
+          alert('エラーです。', error)
+        })
+    })
   },
   fetchDecks(context, payload) {
     getToken().then(headers => {

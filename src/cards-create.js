@@ -17,7 +17,7 @@ exports.handler = (event, context, callback) => {
   }
   const data = JSON.parse(event.body)
   console.log('Function `todo-create` invoked', data)
-  // data.author = context.clientContext.user.user_metadata.full_name
+  data.author = context.clientContext.user.user_metadata.full_name
   data.date = new Date().toString()
   data.cards = []
   const item = {
