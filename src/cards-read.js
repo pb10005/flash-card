@@ -18,7 +18,7 @@ exports.handler = (event, context, callback) => {
   return client.query(q.Get(q.Ref(`classes/card/${id}`)))
   .then((response) => {
     console.log("success", response)
-    if (response.data.author !== context.clientContext.user.user_metadata_full_name) {
+    if (response.data.author !== context.clientContext.user.user_metadata.full_name) {
       return callback(null, {
         statusCode: 400,
         body: "Unauthenticated"
