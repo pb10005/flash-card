@@ -28,6 +28,7 @@
     "express": "^4.16.4",
     "faunadb": "^2.6.0",
     "gotrue-js": "^0.9.24",
+    "netlify-identity-widget": "^1.5.2",
     "nuxt": "^2.4.0",
     "nuxt-buefy": "^0.3.2"
   },

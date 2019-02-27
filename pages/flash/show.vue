@@ -62,6 +62,9 @@ export default {
   },
   mounted() {
     this.$store.dispatch('cardList/setCards', this.$nuxt.$route.query.id)
+    window.netlifyIdentity.on('login', () => {
+      this.$store.dispatch('cardList/setCards', this.$nuxt.$route.query.id)
+    })
   },
   methods: {
     end() {
