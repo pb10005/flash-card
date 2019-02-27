@@ -16,6 +16,7 @@ FaunaDBに登録してください。GitHubアカウントを使ってログイ�
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/pb10005/flash-card)
 #### 3. netlify identityを有効にする
 #### 4. 環境変数の設定
+netlifyのSettings > Build & Deployから、環境変数を設定します。  
 キー：FAUNADB_SECRET  
 値：<1で取得したキー>
 
