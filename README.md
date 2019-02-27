@@ -8,12 +8,16 @@ netlifyに簡単にデプロイできます。
 - GitHubアカウント
 ### 手順
 #### 1. FaunaDBトークン取得
-FaunaDBに登録してください。GitHubアカウントを使ってログインできます。
+FaunaDBに登録してください。GitHubアカウントを使ってログインできます。  
+キーを取得し、コピーしておきます。
 #### 2. netlifyにデプロイ
 以下のボタンをクリックします。
 <!-- Markdown snippet -->
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/pb10005/flash-card)
 ### 3. netlify identityを有効にする
+### 4. 環境変数の設定
+キー：FAUNADB_SECRET  
+値：<1で取得したキー>
 
 ## Build Setup
 
