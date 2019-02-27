@@ -13,6 +13,7 @@ FaunaDBに登録してください。GitHubアカウントを使ってログイ�
 以下のボタンをクリックします。
 <!-- Markdown snippet -->
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/pb10005/flash-card)
+### 3. netlify identityを有効にする
 
 ## Build Setup
 
