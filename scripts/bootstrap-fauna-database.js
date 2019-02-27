@@ -51,7 +51,7 @@ function createFaunaDB(key) {
     .then(()=>{
       return client.query(
         q.Create(q.Ref("indexes"), {
-          name: "all_card",
+          name: "all-cards",
           source: q.Ref("classes/card")
         }))
     }).catch((e) => {
