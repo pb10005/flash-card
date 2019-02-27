@@ -1,6 +1,8 @@
 # flash-card
 
-> My outstanding Nuxt.js project
+nuxt.js + netlify + faunadbなサーバーレスWebアプリ
+<!-- Markdown snippet -->
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/pb10005/flash-card)
 
 ## Build Setup
 
