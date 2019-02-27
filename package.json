@@ -17,6 +17,7 @@
     "start:functions": "netlify-lambda serve src -c ./webpack.config.js",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "prebuild": "npm run bootstrap",
     "precommit": "npm run lint",
     "test": "jest"
   },
