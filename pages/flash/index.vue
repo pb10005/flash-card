@@ -9,8 +9,6 @@
     <div
       v-for="(item, index) in list"
       :key="index"
-      avatar
-      @click="$router.push('/flash/show/?id=' + item.ref)"
     >
       <p>
         {{ item.title }}
@@ -20,6 +18,8 @@
           <progress class="progress is-success" :value="item.cards.filter(x => x.done).length" :max="item.cards.length" />
         </span>
       </p>
+      <v-btn @click="$router.push('/flash/show/?id=' + item.ref)">
+      </v-btn>
       <v-btn @click="$router.push(`/flash/edit/?id=${ item.ref }`)">
         編集
       </v-btn>
