@@ -6,38 +6,24 @@
     <v-btn @click="$router.push('/flash/add')">
       新規作成
     </v-btn>
-    <v-list two-line>
-      <template v-for="(item, index) in list">
-        <v-subheader
-          v-if="item.header"
-          :key="item.header"
-        >
-          {{ item.header }}
-        </v-subheader>
-
-        <v-divider
-          v-else-if="item.divider"
-          :key="index"
-          :inset="item.inset"
-        ></v-divider>
-
-        <v-list-tile
-          v-else
-          :key="item.title"
-          avatar
-          @click="$router.push('/flash/show/?id=' + item.ref)"
-        >
-          <v-list-tile-content>
-            <v-list-tile-title v-html="item.title"></v-list-tile-title>
-            <p>
-              <span>
-                <progress class="progress is-success" :value="item.cards.filter(x => x.done).length" :max="item.cards.length" />
-              </span>
-            </p>
-          </v-list-tile-content>
-        </v-list-tile>
-      </template>
-    </v-list>
+    <div
+      v-for="(item, index) in list"
+      :key="index"
+      avatar
+      @click="$router.push('/flash/show/?id=' + item.ref)"
+    >
+      <p>
+        {{ item.title }}
+      </p>
+      <p>
+        <span>
+          <progress class="progress is-success" :value="item.cards.filter(x => x.done).length" :max="item.cards.length" />
+        </span>
+      </p>
+      <v-btn @click="$router.push(`/flash/edit/?id=${ item.ref }`)">
+        編集
+      </v-btn>
+    </div>
   </section>
 </template>
 <script>
