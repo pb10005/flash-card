@@ -2,18 +2,18 @@
   <div>
     <div class="card">
       <div v-if="editable">
-        <b-input :value="card.word" placeholder="単語" @input="inputWord" />
-        <b-input :value="card.description" placeholder="説明" @input="value => $emit('inputDescription', value)" />
-        <b-input :value="card.reminder" placeholder="思い出し方" @input="value => $emit('inputReminder', value)" />
-        <button class="button" @click="$store.commit('cardList/moveUp', card)">
+        <v-text-field :value="card.word" label="単語" @input="inputWord" />
+        <v-text-field :value="card.description" label="説明" @input="value => $emit('inputDescription', value)" />
+        <v-text-field :value="card.reminder" label="思い出し方" @input="value => $emit('inputReminder', value)" />
+        <v-btn class="button" @click="$store.commit('cardList/moveUp', card)">
           上
-        </button>
-        <button class="button" @click="$store.commit('cardList/moveDown', card)">
+        </v-btn>
+        <v-btn class="button" @click="$store.commit('cardList/moveDown', card)">
           下
-        </button>
-        <button class="button is-danger" @click="remove">
+        </v-btn>
+        <v-btn class="button is-danger" @click="remove">
           削除
-        </button>
+        </v-btn>
       </div>
       <div v-else>
         <p class="title">

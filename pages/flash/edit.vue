@@ -3,39 +3,32 @@
     <p class="title">
       {{ title }}
     </p>
-    <b-field label="概要">
-      <b-input v-model="summary" type="textarea" :rows="3" :maxlength="200" />
-    </b-field>
+    <v-text-field v-model="summary" type="textarea" :rows="3" :maxlength="200" />
     <p>進捗度 {{ cards.filter(x => x.done).length }}/{{ cards.length }}</p>
     <form
       @submit.prevent="$store.commit('cardList/add', {word: word, description: description, reminder: reminder})"
     >
       <content class="card-content">
-        <b-field label="単語">
-          <b-input
-            v-model="word"
-            placeholder="単語"
-            required
-          />
-        </b-field>
-        <b-field label="説明">
-          <b-input
-            v-model="description"
-            placeholder="説明"
-            required
-          />
-        </b-field>
-        <b-field label="思い出し方">
-          <b-input
-            v-model="reminder"
-            placeholder="思い出し方"
-          />
-        </b-field>
-        <button
+        <v-text-field
+          v-model="word"
+          label="単語"
+          required
+        />
+        <v-text-field
+          v-model="description"
+          label="説明"
+          required
+        />
+        <v-text-field
+          v-model="reminder"
+          label="思い出し方"
+        />
+        <v-btn
+          color="primary"
           class="button"
         >
           追加
-        </button>
+        </v-btn>
       </content>
     </form>
     <FlashCard
