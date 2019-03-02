@@ -25,6 +25,7 @@
         />
         <v-btn
           color="primary"
+          type="submit"
           class="button"
         >
           追加
@@ -52,12 +53,12 @@
         reminder: value
       })"
     />
-    <button class="button is-danger" @click="$router.go(-1)">
+    <v-btn class="button is-danger" @click="$router.go(-1)">
       キャンセル
-    </button>
-    <button class="button" @click="submit">
+    </v-btn>
+    <v-btn class="button" @click="submit">
       保存
-    </button>
+    </v-btn>
   </section>
 </template>
 <script>
