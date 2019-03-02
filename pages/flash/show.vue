@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section>
     <p class="title">
       {{ title }}
     </p>

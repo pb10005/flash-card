@@ -19,6 +19,7 @@
         </span>
       </p>
       <v-btn @click="$router.push('/flash/show/?id=' + item.ref)">
+        はじめる
       </v-btn>
       <v-btn @click="$router.push(`/flash/edit/?id=${ item.ref }`)">
         編集
