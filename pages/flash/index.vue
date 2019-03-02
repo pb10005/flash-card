@@ -29,10 +29,7 @@
         >
           <v-list-tile-content>
             <v-list-tile-title v-html="item.title"></v-list-tile-title>
-            <p class="is-size-6">
-              <span>
-                進捗度: {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
-              </span>
+            <p>
               <span>
                 <progress class="progress is-success" :value="item.cards.filter(x => x.done).length" :max="item.cards.length" />
               </span>
