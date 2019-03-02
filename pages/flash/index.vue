@@ -1,48 +1,46 @@
 <template>
-  <section class="section">
+  <section>
     <h1 class="title">
       あなたの単語帳
     </h1>
-    <nuxt-link to="/flash/add">
+    <v-btn @click="$router.push('/flash/add')">
       新規作成
-    </nuxt-link>
-    <ul>
-      <li
-        v-for="(item, index) in list"
-        :key="index"
-      >
-        <p class="is-size-4">
-          {{ item.title }}
-        </p>
-        <p class="is-size-6">
-          <span>
-            進捗度: {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
-          </span>
-          <span>
-            <progress class="progress is-success" :value="item.cards.filter(x => x.done).length" :max="item.cards.length" />
-          </span>
-        </p>
-        <nuxt-link :to="{path: '/flash/show', query: {id: item.ref, type: 'normal'}}">
-          通常
-        </nuxt-link>
-        <nuxt-link :to="{path: '/flash/show', query: {id: item.ref, type: 'reverse'}}">
-          逆引き
-        </nuxt-link>
-        <nuxt-link :to="{path: '/flash/show', query: {id: item.ref, type: 'notyet'}}">
-          未正解
-        </nuxt-link>
-        <nuxt-link :to="{path: '/flash/show', query: {id: item.ref, type: 'done'}}">
-          復習
-        </nuxt-link>
-        <div>
-          <span>{{ new Date(item.date).toString() }}</span>
-          <nuxt-link :to="{path: '/flash/edit', query: {id: item.ref}}">
-            編集
-          </nuxt-link>
-        </div>
-        <hr>
-      </li>
-    </ul>
+    </v-btn>
+    <v-list two-line>
+      <template v-for="(item, index) in list">
+        <v-subheader
+          v-if="item.header"
+          :key="item.header"
+        >
+          {{ item.header }}
+        </v-subheader>
+
+        <v-divider
+          v-else-if="item.divider"
+          :key="index"
+          :inset="item.inset"
+        ></v-divider>
+
+        <v-list-tile
+          v-else
+          :key="item.title"
+          avatar
+          @click="$router.push('/flash/show/?id=' + item.ref)"
+        >
+          <v-list-tile-content>
+            <v-list-tile-title v-html="item.title"></v-list-tile-title>
+            <p class="is-size-6">
+              <span>
+                進捗度: {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
+              </span>
+              <span>
+                <progress class="progress is-success" :value="item.cards.filter(x => x.done).length" :max="item.cards.length" />
+              </span>
+            </p>
+          </v-list-tile-content>
+        </v-list-tile>
+      </template>
+    </v-list>
   </section>
 </template>
 <script>

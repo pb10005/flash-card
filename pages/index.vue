@@ -31,7 +31,7 @@
       </p>
     </article>
     <p>
-      Powered by <a href="https://github.com/buefy/buefy"> Buefy</a>
+      Powered by <a href="https://github.com/buefy/buefy"> <s>Buefy</s></a><a>Vuetify</a>
     </p>
   </section>
 </template>

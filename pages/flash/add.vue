@@ -1,17 +1,13 @@
 <template>
-  <div>
+  <section>
     <form @submit.prevent="$store.dispatch('createDeck', {title: title, summary: summary})">
-      <b-field label="タイトル">
-        <b-input v-model="title" type="text" placeholder="タイトル" required />
-      </b-field>
-      <b-field label="概要">
-        <b-input v-model="summary" type="text" placeholder="概要" required />
-      </b-field>
-      <button type="submit" class="button">
+      <v-text-field v-model="title" type="text" label="タイトル" required />
+      <v-text-field v-model="summary" type="text" label="概要" required />
+      <v-btn type="submit" class="button">
         新規作成
-      </button>
+      </v-btn>
     </form>
-  </div>
+  </section>
 </template>
 <script>
 export default {

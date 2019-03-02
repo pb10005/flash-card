@@ -38,7 +38,8 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy',
+    // 'nuxt-buefy',
+    '@nuxtjs/vuetify',
     '@nuxtjs/pwa',
     '@nuxtjs/proxy'
   ],

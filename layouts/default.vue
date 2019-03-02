@@ -1,64 +1,77 @@
 <template>
-  <div>
-    <nav
-      class="navbar header has-shadow is-primary"
-      role="navigation"
-      aria-label="main navigation"
+  <v-app>
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      app
     >
-      <div class="navbar-brand">
-        <a
-          class="navbar-item"
-          href="/"
-        >
-          単語帳
-        </a>
-
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-    </nav>
-
-    <section class="main-content columns">
-      <aside class="column is-2 section">
-        <p class="menu-label is-hidden-touch">
-          General
-        </p>
-        <ul class="menu-list">
-          <li
-            v-for="(item, key) of items"
-            :key="key"
+      <v-list dense>
+        <v-list-tile @click="$router.push('/')">
+          <v-list-tile-action>
+            <v-icon>home</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>ホーム</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile @click="$router.push('/flash')">
+          <v-list-tile-action>
+            <v-icon>list</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>単語帳</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+      <div data-netlify-identity-menu />
+    </v-navigation-drawer>
+    <v-toolbar color="indigo" dark fixed app>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer" />
+      <v-toolbar-title>単語帳</v-toolbar-title>
+    </v-toolbar>
+    <v-card flat>
+      <v-content class="container">
+        <v-container fluid full-height>
+          <v-layout
+            justify-center
+            justify-end
+            align-center
           >
-            <nuxt-link
-              :to="item.to"
-              exact-active-class="is-active"
-            >
-              <b-icon :icon="item.icon" /> {{ item.title }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </aside>
+            <nuxt />
+          </v-layout>
+        </v-container>
+      </v-content>
+      <v-bottom-nav
+        :value="true"
+        fixed
+        dark
+        color="secondary"
+      >
+        <v-btn flat color="teal" @click="$router.push('/')">
+          <span>ホーム</span>
+          <v-icon>home</v-icon>
+        </v-btn>
 
-      <div class="container column is-10">
-        <nuxt />
-      </div>
-    </section>
-    <!-- Add a menu:
-    Log in / Sign up - when the user is not logged in
-    Username / Log out - when the user is logged in
-    -->
-    <div data-netlify-identity-menu />
+        <v-btn flat color="teal" @click="$router.push('/flash')">
+          <span>単語帳</span>
+          <v-icon>list</v-icon>
+        </v-btn>
+
+        <v-btn flat color="teal">
+          <span>設定</span>
+          <v-icon>settings</v-icon>
+        </v-btn>
+      </v-bottom-nav>
+    </v-card>
     <!-- include the widget -->
     <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
-  </div>
+  </v-app>
 </template>
-
 <script>
 export default {
   data() {
     return {
+      drawer: null,
       items: [
         {
           title: 'Home',
@@ -75,3 +88,8 @@ export default {
   }
 }
 </script>
+<style scoped>
+.container {
+  margin-bottom: 50px;
+}
+</style>

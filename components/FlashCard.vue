@@ -17,20 +17,20 @@
       </div>
       <div v-else>
         <p class="title">
-          {{ reversed ? card.description : card.word }}
+          {{ reversed === 1 ? card.description : card.word }}
         </p>
-        <button class="button" @click="descriptionRevealed ^= true">
-          {{ reversed ? '単語' : '説明' }}
-        </button>
-        <button class="button" @click="reminderRevealed ^= true">
+        <v-btn class="button" @click="descriptionRevealed ^= true">
+          {{ reversed === 1 ? '単語' : '説明' }}
+        </v-btn>
+        <v-btn class="button" @click="reminderRevealed ^= true">
           思い出し方
-        </button>
-        <button v-if="!editable" class="button" :class="{'is-success': card.done, 'is-danger': !card.done}" @click="check">
+        </v-btn>
+        <v-btn v-if="!editable" class="button" :color="card.done ? 'success' : 'warning'" :class="{'is-success': card.done, 'is-danger': !card.done}" @click="check">
           {{ card.done ? '正解済':'未正解' }}
-        </button>
+        </v-btn>
       </div>
       <p v-if="descriptionRevealed">
-        {{ reversed ? card.word : card.description }}
+        {{ reversed === 1 ? card.word : card.description }}
       </p>
       <p v-if="reminderRevealed">
         {{ card.reminder }}
@@ -41,7 +41,7 @@
 <script>
 export default {
   props: {
-    reversed: Boolean,
+    reversed: Number,
     removable: Boolean,
     editable: Boolean,
     card: {
