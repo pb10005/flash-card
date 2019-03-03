@@ -19,10 +19,10 @@
             :rotate="-90"
             :size="100"
             :width="15"
-            :value="100 * item.cards.filter(x => x.done).length / item.cards.length"
-            color="pink"
+            :value="item.cards.length === 0? 0: 100 * item.cards.filter(x => x.done).length / item.cards.length"
+            :color="item.cards.filter(x => !x.done).length === 0? 'green': 'pink'"
           >
-            {{ item.cards.filter(x => x.done).length}} / {{ item.cards.length }}
+            {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
           </v-progress-circular>
           <progress class="progress is-success" :value="item.cards.filter(x => x.done).length" :max="item.cards.length" />
         </span>
