@@ -1,5 +1,5 @@
 <template>
-  <v-container fuild>
+  <v-container>
     <v-btn
       dark
       fixed
