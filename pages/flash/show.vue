@@ -86,19 +86,43 @@ export default {
     },
     toggleReversed() {
       this.reversed ^= 1
-      this.$router.push({ query: { type: this.type, reversed: this.reversed } })
+      this.$router.push({
+        query: {
+          id: this.$nuxt.$route.query.id,
+          type: this.type,
+          reversed: this.reversed
+        }
+      })
     },
     normal() {
       this.type = 'normal'
-      this.$router.push({ query: { type: this.type, reversed: this.reversed } })
+      this.$router.push({
+        query: {
+          id: this.$nuxt.$route.query.id,
+          type: this.type,
+          reversed: this.reversed
+        }
+      })
     },
     notYet() {
       this.type = 'notyet'
-      this.$router.push({ query: { type: this.type, reversed: this.reversed } })
+      this.$router.push({
+        query: {
+          id: this.$nuxt.$route.query.id,
+          type: this.type,
+          reversed: this.reversed
+        }
+      })
     },
     done() {
       this.type = 'done'
-      this.$router.push({ query: { type: this.type, reversed: this.reversed } })
+      this.$router.push({
+        query: {
+          id: this.$nuxt.$route.query.id,
+          type: this.type,
+          reversed: this.reversed
+        }
+      })
     }
   }
 }
