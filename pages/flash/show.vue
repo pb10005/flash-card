@@ -82,7 +82,7 @@ export default {
         id: this.$nuxt.$route.query.id,
         data: this.$store.state.cardList.deck
       })
-      this.$router.go(-1)
+      this.$router.push('/flash')
     },
     toggleReversed() {
       this.reversed ^= 1
