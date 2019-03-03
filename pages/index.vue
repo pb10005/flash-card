@@ -11,7 +11,7 @@
     <h2 class="headline">
       逆引き
     </h2>
-    <v-content class="content">
+    <v-content>
       <p>
         説明のみを表示して、単語を覚えているかチェックすることも可能です。
       </p>
