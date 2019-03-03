@@ -1,33 +1,32 @@
 <template>
-  <section>
-    <p class="title">
+  <v-container fluid>
+    <p class="headline">
       {{ title }}
     </p>
-    <p class="subtitle">
-      <span>
-        {{ deck.summary }}
-      </span><br>
-      <span>
-        進捗度: {{ deck.cards.filter(x => x.done).length }} / {{ deck.cards.length }}
-      </span>
-      <span>
-        <v-progress-circular
-          :rotate="-90"
-          :size="100"
-          :width="15"
-          :value="deck.cards.length === 0? 0: 100 * deck.cards.filter(x => x.done).length / deck.cards.length"
-          :color="deck.cards.filter(x => !x.done).length === 0? 'green': 'pink'"
-        >
-          {{ deck.cards.filter(x => x.done).length }} / {{ deck.cards.length }}
-        </v-progress-circular>
-      </span>
+    <p>
+      {{ deck.summary }}
     </p>
-    <v-btn @click="toggleReversed" color="primary">
+    <v-progress-circular
+      :rotate="-90"
+      :size="100"
+      :width="15"
+      :value="deck.cards.length === 0? 0: 100 * deck.cards.filter(x => x.done).length / deck.cards.length"
+      :color="deck.cards.filter(x => !x.done).length === 0? 'green': 'pink'"
+    >
+      {{ deck.cards.filter(x => x.done).length }} / {{ deck.cards.length }}
+    </v-progress-circular>
+    <v-btn color="primary" @click="toggleReversed">
       通常/逆引き
     </v-btn>
-    <v-btn @click="normal" color="success">すべて</v-btn>
-    <v-btn @click="notYet" color="success">未正解</v-btn>
-    <v-btn @click="done" color="success">復習</v-btn>
+    <v-btn color="success" @click="normal">
+      すべて
+    </v-btn>
+    <v-btn color="success" @click="notYet">
+      未正解
+    </v-btn>
+    <v-btn color="success" @click="done">
+      復習
+    </v-btn>
     <FlashCard
       v-for="(item, index) in cards"
       :key="index"
@@ -37,10 +36,10 @@
       @checked="$store.commit('cardList/toggle', item)"
       @remove="$store.commit('cardList/remove', item)"
     />
-    <v-btn class="button" @click="end" color="warning">
+    <v-btn class="button" color="warning" @click="end">
       終了
     </v-btn>
-  </section>
+  </v-container>
 </template>
 <script>
 import FlashCard from '~/components/FlashCard'

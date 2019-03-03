@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <v-container fluid>
     <h1 class="title">
       単語帳
     </h1>
@@ -33,7 +33,7 @@
     <p>
       Powered by <a href="https://github.com/buefy/buefy"> <s>Buefy</s></a><a>Vuetify</a>
     </p>
-  </section>
+  </v-container>
 </template>
 <script>
 export default {

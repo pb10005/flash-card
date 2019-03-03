@@ -41,7 +41,12 @@
 <script>
 export default {
   props: {
-    reversed: Number,
+    reversed: {
+      type: Number,
+      default() {
+        return 0
+      }
+    },
     removable: Boolean,
     editable: Boolean,
     card: {

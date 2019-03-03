@@ -1,39 +1,45 @@
 <template>
-  <section>
-    <h1 class="title">
-      あなたの単語帳
-    </h1>
-    <v-btn @click="$router.push('/flash/add')">
-      新規作成
+  <v-container fuild>
+    <v-btn
+      dark
+      fixed
+      fab
+      top
+      right
+      color="pink"
+      @click="$router.push('/flash/add')"
+    >
+      <v-icon>add</v-icon>
     </v-btn>
-    <div
+    <v-card
       v-for="(item, index) in list"
       :key="index"
+      flat
     >
-      <p>
-        {{ item.title }}
-      </p>
-      <p>
-        <span>
-          <v-progress-circular
-            :rotate="-90"
-            :size="100"
-            :width="15"
-            :value="item.cards.length === 0? 0: 100 * item.cards.filter(x => x.done).length / item.cards.length"
-            :color="item.cards.filter(x => !x.done).length === 0? 'green': 'pink'"
-          >
-            {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
-          </v-progress-circular>
-        </span>
-      </p>
-      <v-btn @click="$router.push('/flash/show/?id=' + item.ref)">
-        はじめる
-      </v-btn>
-      <v-btn @click="$router.push(`/flash/edit/?id=${ item.ref }`)">
-        編集
-      </v-btn>
-    </div>
-  </section>
+      <v-card-title>
+        <h3 class="headline">
+          {{ item.title }}
+        </h3>
+      </v-card-title>
+      <v-progress-circular
+        :rotate="-90"
+        :size="100"
+        :width="15"
+        :value="item.cards.length === 0? 0: 100 * item.cards.filter(x => x.done).length / item.cards.length"
+        :color="item.cards.filter(x => !x.done).length === 0? 'green': 'pink'"
+      >
+        {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
+      </v-progress-circular>
+      <v-card-actions>
+        <v-btn @click="$router.push('/flash/show/?id=' + item.ref)">
+          はじめる
+        </v-btn>
+        <v-btn @click="$router.push(`/flash/edit/?id=${ item.ref }`)">
+          編集
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-container>
 </template>
 <script>
 export default {
