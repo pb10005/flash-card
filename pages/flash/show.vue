@@ -11,7 +11,15 @@
         進捗度: {{ deck.cards.filter(x => x.done).length }} / {{ deck.cards.length }}
       </span>
       <span>
-        <progress class="progress is-success" :value="deck.cards.filter(x => x.done).length" :max="deck.cards.length" />
+        <v-progress-circular
+          :rotate="-90"
+          :size="100"
+          :width="15"
+          :value="deck.cards.length === 0? 0: 100 * deck.cards.filter(x => x.done).length / deck.cards.length"
+          :color="deck.cards.filter(x => !x.done).length === 0? 'green': 'pink'"
+        >
+          {{ deck.cards.filter(x => x.done).length }} / {{ deck.cards.length }}
+        </v-progress-circular>
       </span>
     </p>
     <v-btn @click="toggleReversed" color="primary">
