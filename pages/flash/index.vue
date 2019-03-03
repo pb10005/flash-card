@@ -24,7 +24,6 @@
           >
             {{ item.cards.filter(x => x.done).length }} / {{ item.cards.length }}
           </v-progress-circular>
-          <progress class="progress is-success" :value="item.cards.filter(x => x.done).length" :max="item.cards.length" />
         </span>
       </p>
       <v-btn @click="$router.push('/flash/show/?id=' + item.ref)">
