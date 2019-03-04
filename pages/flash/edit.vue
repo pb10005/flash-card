@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container pa-5>
     <p class="display-1">
       {{ title }}
     </p>

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container pa-5>
     <v-btn @click="login">
       {{ fullname ? 'ログアウト': 'ログイン' }}
     </v-btn>
