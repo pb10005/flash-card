@@ -1,8 +1,13 @@
 <template>
   <v-container>
-    <v-btn @click="login">
-      ログイン
-    </v-btn>
+    <v-layout
+      justify-center
+      align-center
+    >
+      <v-btn @click="login">
+        ログイン
+      </v-btn>
+    </v-layout>
   </v-container>
 </template>
 <script>

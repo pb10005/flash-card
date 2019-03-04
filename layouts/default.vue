@@ -43,6 +43,25 @@
       <v-toolbar-title>単語帳</v-toolbar-title>
     </v-toolbar>
     <v-container fluid>
+      <v-snackbar
+        v-model="snackbar"
+        :bottom="y === 'bottom'"
+        :left="x === 'left'"
+        :multi-line="mode === 'multi-line'"
+        :right="x === 'right'"
+        :timeout="5000"
+        :top="y === 'top'"
+        :vertical="mode === 'vertical'"
+      >
+        {{ message }}
+        <v-btn
+          color="pink"
+          flat
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </v-snackbar>
       <v-card flat>
         <v-layout
           justify-center
@@ -58,6 +77,8 @@
 export default {
   data() {
     return {
+      message: '',
+      snackbar: false,
       drawer: null,
       items: [
         {
@@ -82,10 +103,18 @@ export default {
     this.$store.commit('user/setFullname')
     window.netlifyIdentity.on('login', () => {
       this.$store.commit('user/setFullname')
+      this.showSnackbar('ログインしました')
     })
     window.netlifyIdentity.on('logout', () => {
       this.$store.commit('user/setFullname')
+      this.showSnackbar('ログアウトしました')
     })
+  },
+  methods: {
+    showSnackbar(text) {
+      this.message = text
+      this.snackbar = true
+    }
   }
 }
 </script>

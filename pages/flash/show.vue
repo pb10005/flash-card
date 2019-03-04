@@ -26,8 +26,8 @@
       </v-card>
     </v-flex>
     <v-layout
-      align-center
       justify-center
+      align-center
     >
       <v-btn color="primary" @click="toggleReversed">
         通常/逆引き
@@ -42,18 +42,26 @@
         復習
       </v-btn>
     </v-layout>
-    <FlashCard
-      v-for="(item, index) in cards"
-      :key="index"
-      :card="item"
-      :removable="false"
-      :reversed="$nuxt.$route.query.reversed"
-      @checked="$store.commit('cardList/toggle', item)"
-      @remove="$store.commit('cardList/remove', item)"
-    />
-    <v-btn class="button" color="warning" @click="end">
-      終了
-    </v-btn>
+    <v-layout
+      column
+      justify-center
+      align-center
+    >
+      <FlashCard
+        v-for="(item, index) in cards"
+        :key="index"
+        :card="item"
+        :removable="false"
+        :reversed="$nuxt.$route.query.reversed"
+        @checked="$store.commit('cardList/toggle', item)"
+        @remove="$store.commit('cardList/remove', item)"
+      />
+      <v-flex>
+        <v-btn class="button" color="warning" @click="end">
+          終了
+        </v-btn>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 <script>
