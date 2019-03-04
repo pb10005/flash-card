@@ -1,8 +1,13 @@
 <template>
   <v-container pa-5>
-    <v-btn @click="login">
-      {{ fullname ? 'ログアウト': 'ログイン' }}
-    </v-btn>
+    <v-layout
+      justify-center
+      align-center
+    >
+      <v-btn @click="login">
+        {{ fullname ? 'ログアウト': 'ログイン' }}
+      </v-btn>
+    </v-layout>
   </v-container>
 </template>
 <script>
