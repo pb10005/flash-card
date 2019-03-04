@@ -64,11 +64,6 @@
 </template>
 <script>
 export default {
-  head() {
-    script: [
-      { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
-    ]
-  },
   data() {
     return {
       drawer: null,
