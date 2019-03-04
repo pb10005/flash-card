@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container pa-5>
     <h2 class="headline">
       暗記
     </h2>

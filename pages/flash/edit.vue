@@ -1,10 +1,9 @@
 <template>
-  <section class="section">
-    <p class="title">
+  <v-container>
+    <p class="display-1">
       {{ title }}
     </p>
-    <v-text-field v-model="summary" type="textarea" :rows="3" :maxlength="200" />
-    <p>進捗度 {{ cards.filter(x => x.done).length }}/{{ cards.length }}</p>
+    <v-text-field v-model="summary" type="textarea" label="説明" :rows="3" :maxlength="200" />
     <form
       @submit.prevent="$store.commit('cardList/add', {word: word, description: description, reminder: reminder})"
     >
@@ -53,13 +52,13 @@
         reminder: value
       })"
     />
-    <v-btn class="button is-danger" @click="$router.go(-1)">
+    <v-btn color="pink" dark class="button is-danger" @click="$router.go(-1)">
       キャンセル
     </v-btn>
-    <v-btn class="button" @click="submit">
+    <v-btn color="success" class="button" @click="submit">
       保存
     </v-btn>
-  </section>
+  </v-container>
 </template>
 <script>
 import FlashCard from '~/components/FlashCard'

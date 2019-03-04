@@ -38,8 +38,8 @@ export const actions = {
           const data = response.data
           context.commit('setData', data)
         })
-        .catch(error => {
-          alert('エラーです。', error)
+        .catch(() => {
+          window.netlifyIdentity.open()
         })
     })
   },
@@ -58,8 +58,8 @@ export const actions = {
             })
           )
         })
-        .catch(error => {
-          alert('通信エラーです。', error)
+        .catch(() => {
+          window.netlifyIdentity.open()
         })
     })
   }

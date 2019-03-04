@@ -72,8 +72,8 @@ export const actions = {
         .then(response => {
           context.commit('setCards', response.data)
         })
-        .catch(error => {
-          alert('通信エラーです。', error)
+        .catch(() => {
+          window.netlifyIdentity.open()
         })
     })
   },
@@ -84,8 +84,8 @@ export const actions = {
           headers: headers
         })
         .then(response => {})
-        .catch(error => {
-          alert('通信エラーです。', error)
+        .catch(() => {
+          window.netlifyIdentity.open()
         })
     })
   }

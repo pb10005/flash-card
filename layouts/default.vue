@@ -5,6 +5,12 @@
       fixed
       app
     >
+      <v-toolbar
+        color="indigo"
+        dark  
+      >
+        <v-toolbar-title>{{ fullname || 'ゲスト' }}</v-toolbar-title>
+      </v-toolbar>
       <v-list dense>
         <v-list-tile @click="$router.push('/')">
           <v-list-tile-action>
@@ -22,8 +28,15 @@
             <v-list-tile-title>単語帳</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile @click="$router.push('/settings')">
+          <v-list-tile-action>
+            <v-icon>settings</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>設定</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list>
-      <div data-netlify-identity-menu />
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer" />
@@ -37,27 +50,6 @@
         >
           <nuxt />
         </v-layout>
-        <v-bottom-nav
-          :value="true"
-          fixed
-          dark
-          color="secondary"
-        >
-          <v-btn flat color="teal" @click="$router.push('/')">
-            <span>ホーム</span>
-            <v-icon>home</v-icon>
-          </v-btn>
-
-          <v-btn flat color="teal" @click="$router.push('/flash')">
-            <span>単語帳</span>
-            <v-icon>list</v-icon>
-          </v-btn>
-
-          <v-btn flat color="teal">
-            <span>設定</span>
-            <v-icon>settings</v-icon>
-          </v-btn>
-        </v-bottom-nav>
       </v-card>
     </v-container>
   </v-app>
@@ -80,6 +72,20 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    fullname() {
+      return this.$store.getters['user/fullname']
+    }
+  },
+  mounted() {
+    this.$store.commit('user/setFullname')
+    window.netlifyIdentity.on('login', () => {
+      this.$store.commit('user/setFullname')
+    })
+    window.netlifyIdentity.on('logout', () => {
+      this.$store.commit('user/setFullname')
+    })
   }
 }
 </script>

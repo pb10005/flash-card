@@ -1,32 +1,47 @@
 <template>
-  <v-container>
-    <p class="headline">
-      {{ title }}
-    </p>
-    <p>
-      {{ deck.summary }}
-    </p>
-    <v-progress-circular
-      :rotate="-90"
-      :size="100"
-      :width="15"
-      :value="deck.cards.length === 0? 0: 100 * deck.cards.filter(x => x.done).length / deck.cards.length"
-      :color="deck.cards.filter(x => !x.done).length === 0? 'green': 'pink'"
+  <v-container pa-5>
+    <v-flex>
+      <v-card flat>
+        <v-layout
+          column
+          justify-center
+          align-center
+        >
+          <v-card-title class="display-1">
+            {{ title }}
+          </v-card-title>
+          <v-card-subtitle class="headline">
+            {{ deck.summary }}
+          </v-card-subtitle>
+          <v-progress-circular
+            :rotate="-90"
+            :size="100"
+            :width="15"
+            :value="deck.cards.length === 0? 0: 100 * deck.cards.filter(x => x.done).length / deck.cards.length"
+            :color="deck.cards.filter(x => !x.done).length === 0? 'green': 'pink'"
+          >
+            {{ deck.cards.filter(x => x.done).length }} / {{ deck.cards.length }}
+          </v-progress-circular>
+        </v-layout>
+      </v-card>
+    </v-flex>
+    <v-layout
+      align-center
+      justify-center
     >
-      {{ deck.cards.filter(x => x.done).length }} / {{ deck.cards.length }}
-    </v-progress-circular>
-    <v-btn color="primary" @click="toggleReversed">
-      通常/逆引き
-    </v-btn>
-    <v-btn color="success" @click="normal">
-      すべて
-    </v-btn>
-    <v-btn color="success" @click="notYet">
-      未正解
-    </v-btn>
-    <v-btn color="success" @click="done">
-      復習
-    </v-btn>
+      <v-btn color="primary" @click="toggleReversed">
+        通常/逆引き
+      </v-btn>
+      <v-btn @click="normal">
+        すべて
+      </v-btn>
+      <v-btn @click="notYet">
+        未正解
+      </v-btn>
+      <v-btn @click="done">
+        復習
+      </v-btn>
+    </v-layout>
     <FlashCard
       v-for="(item, index) in cards"
       :key="index"
