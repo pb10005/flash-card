@@ -45,13 +45,9 @@
     <v-container fluid>
       <v-snackbar
         v-model="snackbar"
-        :bottom="y === 'bottom'"
-        :left="x === 'left'"
-        :multi-line="mode === 'multi-line'"
-        :right="x === 'right'"
+        bottom
+        center
         :timeout="5000"
-        :top="y === 'top'"
-        :vertical="mode === 'vertical'"
       >
         {{ message }}
         <v-btn

@@ -10,9 +10,9 @@
           <v-card-title class="display-1">
             {{ title }}
           </v-card-title>
-          <v-card-subtitle class="headline">
+          <v-card-title class="headline">
             {{ deck.summary }}
-          </v-card-subtitle>
+          </v-card-title>
           <v-progress-circular
             :rotate="-90"
             :size="100"
@@ -25,10 +25,7 @@
         </v-layout>
       </v-card>
     </v-flex>
-    <v-layout
-      justify-center
-      align-center
-    >
+    <div class="center">
       <v-btn color="primary" @click="toggleReversed">
         通常/逆引き
       </v-btn>
@@ -41,7 +38,7 @@
       <v-btn @click="done">
         復習
       </v-btn>
-    </v-layout>
+    </div>
     <v-layout
       column
       justify-center
@@ -158,4 +155,7 @@ export default {
 }
 </script>
 <style scoped>
+.center {
+  text-align: center;
+}
 </style>
