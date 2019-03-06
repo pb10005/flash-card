@@ -104,7 +104,7 @@ export default {
     })
   },
   methods: {
-    end() {
+    async end() {
       await this.$store.dispatch('cardList/update', {
         id: this.$nuxt.$route.query.id,
         data: this.$store.state.cardList.deck
