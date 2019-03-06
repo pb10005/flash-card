@@ -59,6 +59,7 @@ export const actions = {
           )
         })
         .catch(() => {
+          window.netlifyIdentity.logout()
           window.netlifyIdentity.open()
         })
     })
