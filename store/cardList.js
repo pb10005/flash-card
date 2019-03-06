@@ -77,8 +77,8 @@ export const actions = {
         })
     })
   },
-  update(context, payload) {
-    getToken().then(headers => {
+  async update(context, payload) {
+    await getToken().then(headers => {
       axios
         .post(`/.netlify/functions/cards-update/${payload.id}`, payload.data, {
           headers: headers
