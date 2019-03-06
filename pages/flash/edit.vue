@@ -105,7 +105,7 @@ export default {
     this.$store.dispatch('cardList/setCards', this.$nuxt.$route.query.id)
   },
   methods: {
-    submit() {
+    async submit() {
       await this.$store.dispatch('cardList/update', {
         id: this.$nuxt.$route.query.id,
         data: this.$store.state.cardList.newDeck
