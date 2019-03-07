@@ -1,5 +1,5 @@
 <template>
-  <v-container pa-5>
+  <v-container py-5>
     <v-flex>
       <v-card flat>
         <v-layout
