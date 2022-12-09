@@ -27,7 +27,7 @@
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/vuetify": "^0.5.5",
     "cross-env": "^5.2.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "faunadb": "^2.6.0",
     "gotrue-js": "^0.9.24",
     "netlify-identity-widget": "^1.5.2",
